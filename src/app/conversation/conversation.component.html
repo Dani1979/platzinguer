@@ -1,1 +1,18 @@
-<p>conversation works!</p>
+<p>
+        {{ friend | json }}
+      </p>
+      <p>
+        {{ price | number: '1.2-2' }}
+      </p>
+      <p>
+        {{ today | date: 'short' }}
+      </p>
+      <p>
+        {{ today | date: 'medium' }}
+      </p>
+      <p>
+        {{ today | date: 'full' }}
+      </p>
+      <p>
+        {{ today | date: 'EEEE dd/MM/yy' }}
+      </p>

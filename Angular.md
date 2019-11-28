@@ -213,3 +213,110 @@ para utilizar nuestro servicio, en los parametros del contrustor que queremos ut
 y posteriormente llamando al metodo del servicio, cargamos la informacion en el array del compente destino:
 
 >     this.friends = this.userService.getFriends();
+
+
+##pipes
+
+Los pipes en angular son elementos que podemos usar del lado del html que nos permiten formatear informacion.
+
+tenemos pipes de json , number, de fechas.
+
+En  nuestro caso , queremos imprimir el objeto friend entero, formatear un numero una fecha en nuestro componente conversation.component.html
+```
+<p>
+        {{ friend | json }}
+      </p>
+      <p>
+        {{ price | number: '1.2-2' }}
+      </p>
+      <p>
+        {{ today | date: 'short' }}
+      </p>
+      <p>
+        {{ today | date: 'medium' }}
+      </p>
+      <p>
+        {{ today | date: 'full' }}
+      </p>
+      <p>
+        {{ today | date: 'EEEE dd/MM/yy' }}
+      </p>
+
+
+```
+
+quedando el resultado:
+
+> { "nick": "Eduardo", "subnick": "Mi mensaje personal", "status": "online", "age": 28, "email": "eduardo@platzi.com", "friend": true, "uid": 1 }
+> 
+> 78.23
+> 
+> 11/28/19, 3:23 PM
+> 
+> Nov 28, 2019, 3:23:33 PM
+> 
+> Thursday, November 28, 2019 at 3:23:33 PM GMT+01:00
+> 
+> Thursday 28/11/19
+
+
+Tambien podemos crear nuestro propios pipes:
+
+para ello, mediante el cliente de de angular ng g rutapipe/nombrePipe
+
+En nuestro caso ng g pipe pipes/search si vemos el contenido del pipe search.ts
+
+import { Pipe, PipeTransform } from '@angular/core';
+
+```
+@Pipe({
+  name: 'search'
+})
+export class SearchPipe implements PipeTransform {
+
+  transform(value: any, args: string): any {
+    if (!value) {
+      return;
+  }
+  // si viene vacio, que devuelva el arreglo vacio, para que muestren todos los contactos
+    if (!args) {
+      return value;
+  }
+
+    args = args.toLowerCase();
+    return value.filter( (item: any) => {
+      return JSON.stringify(item).toLowerCase().includes(args);
+  // tslint:disable-next-line: semicolon
+  })
+  }
+
+}
+
+```
+
+vemo que recibe dos parametros , value y args. Value seria al array donde buscar y args seria el valor buscado. Nuestra funcion devolvera una cadena con los amigos encontrados.
+
+La validacion que tenemos de que si args es vacio devolvamos el array entero es porque queremos buscar el comportamiento de que si no filtramos por nada, tengamos toda la lista de amigos, en el momento que tecleemos alguno filtraremos la informacion por la cadena a buscar.
+
+## ngModel
+
+ toma una variable y detecta lo cambios, es decir en nuestro place holder, cada vez que cambie refrescara la variable query y viceversa si query cambia en etpype script se refleja en el otro lado. es bidireccional.
+
+> <input type="text" placeholder="Buscar amigos" [(ngModel)]="query">
+
+El modulo que nos permite utilizar ngModel es FormsModule, lo tenemos que referenciar en el app.modules.ts
+
+> import { FormsModule } from '@angular/forms';
+> 
+> imports: [
+>     BrowserModule,
+>     RouterModule.forRoot(appRoutes),
+>     FormsModule
+>   ],
+
+Para aplicar nuestro pipe, nos vamos a home.component.html para filtrar la lista de amigs del ngFor
+> 
+> <ng-container *ngFor="let user of friends | search: query; let i = index">
+
+
+

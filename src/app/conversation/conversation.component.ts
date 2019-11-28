@@ -12,6 +12,8 @@ export class ConversationComponent implements OnInit {
   friendId: any;
   friends: User[];
   friend: User;
+  price: number = 78.234515478;
+  today: any = Date.now();
   constructor(private activatedRoute: ActivatedRoute,
               private userService: UserService) {
     this.friends = this.userService.getFriends();
