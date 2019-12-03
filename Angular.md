@@ -139,7 +139,7 @@ en nuestro caso vamos a poner dos bloques en nuestro componente para mostrar ami
 ```
 lo ng-container es una etiqueta de html provista por angular, invisible para el cliente y nos permite tener varias directivas. En nuestro caso tendremos el ngFor y el ngIf
 
-##Navegacion enrte componentes
+## Navegacion enrte componentes
 
 Para pasar parametros de un componente a otro se lo podemos pasar mediante la llamada. Para que no falle la llamada, en nuestro componente receptor hay que indicarle que va a recibir un parametro. Para ello nos vamos al fichero appModule.ts y modificamos la ruta conversation añadiendole un parametro:
 
@@ -320,3 +320,46 @@ Para aplicar nuestro pipe, nos vamos a home.component.html para filtrar la lista
 
 
 
+## npm -i paquete --save-exact
+
+El menos save-exact viene bien para referenciar en nuestro package.json la version exacta que maneja nuestro proyecto
+
+## angular.json
+
+Este fichero contiene toda la configuracion necesaria para nuestra aplicacion. Para añadir nuestros framework de stilos, como bootstrap y fontawesome, lo metemos aqui. No es conveniente tocar esto archivos salvo para los estilos
+
+>             "styles": [
+>               "node_modules/bootstrap/dist/css/bootstrap.css",
+>               "node_modules/@fortawesome/fontawesome-free/css/all.css",
+>               "src/styles.css"
+>             ],
+
+
+
+En el fichero styles.css, es el fichero que contiene las clases de css genericas para toda la aplicacion. 
+
+En nuestro proyecto hemos creado clases css auxiliares para centrar para maargen, etc. Bootstrap ya provee estas clases que son :
+
+Bootstrap ya trae clases como esas auxiliares:
+> center-text
+Y la de los márgenes:
+> mt-x : margin top de 1 a 5
+> mb-x: margin bottom de 1 a 5
+> ml-x: margin left
+> mr-x margin right
+
+
+en los evento de click, ademas de poder llamar funciones, podemos realizar alguna sentencia, en nuestro caso en el home.commponent.html asignamos en el evento click el valor de login a la variable operation
+
+(click)="operation = 'login'"
+
+
+En los propios divs podemos poner routerlinks sin necesidad de utilizar un ancla <a\>
+
+> <div class="item branding" routerLink="/home">
+
+la propiedad z-index indica el nivel de profundidad de la capa
+
+La clase row de bbootstrap nos permite dividir en 12 columnas
+>     <div class="row">
+>       <div class="col">

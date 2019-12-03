@@ -10,6 +10,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MenuComponent } from './menu/menu.component';
 import { SearchPipe } from './pipes/search';
 import { FormsModule } from '@angular/forms';
+import { SwitchImagePipe } from './pipes/switch-image.pipe';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
     ConversationComponent,
     ProfileComponent,
     MenuComponent,
-    SearchPipe
+    SearchPipe,
+    SwitchImagePipe
   ],
   imports: [
     BrowserModule,

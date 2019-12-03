@@ -1,0 +1,36 @@
+#main-logo {
+    width: 40px;
+}
+
+#menuContainer {
+    background: rgba(147,206,222,1);
+    background: -moz-linear-gradient(45deg, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 24%, rgba(41,184,229,1) 48%, rgba(73,165,191,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(147,206,222,1)), color-stop(24%, rgba(117,189,209,1)), color-stop(48%, rgba(41,184,229,1)), color-stop(100%, rgba(73,165,191,1)));
+    background: -webkit-linear-gradient(45deg, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 24%, rgba(41,184,229,1) 48%, rgba(73,165,191,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 24%, rgba(41,184,229,1) 48%, rgba(73,165,191,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 24%, rgba(41,184,229,1) 48%, rgba(73,165,191,1) 100%);
+    background: linear-gradient(45deg, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 24%, rgba(41,184,229,1) 48%, rgba(73,165,191,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#93cede', endColorstr='#49a5bf', GradientType=1 );
+    
+    position: fixed;
+    width: 100%;
+    z-index: 9;
+    height: 56;
+    top: 0px;
+    border-top: 1px solid white;
+}
+
+.branding {
+    padding:  5px !important;
+    border-top: none !important;
+    border-right: none !important;
+}
+
+
+#menuContainer > .item { 
+    padding: 15px;
+    color: white;
+    cursor: default;
+    border: 1px solid white;
+    display: inline-block;
+}
